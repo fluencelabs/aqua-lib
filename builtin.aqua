@@ -99,6 +99,11 @@ service Srv("srv"):
     -- Returns: service_id – the service ID of the created service.
     create: string -> string
 
+    -- Used to remove a service from a certain node
+    -- Arguments:
+    -- service_id – ID of the service to remove
+    remove: string -> ()
+
     -- Returns a list of services running on a peer
     list: -> []Service
 
