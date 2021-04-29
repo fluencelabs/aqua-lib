@@ -1,0 +1,23 @@
+{
+  "name": "@fluencelabs/aqua-lib",
+  "version": "0.1.0",
+  "description": "Aqua standard library",
+  "files": [
+    "builtin.aqua"
+  ],
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fluencelabs/aqua-lib.git"
+  },
+  "keywords": [
+    "aqua",
+    "fluence"
+  ],
+  "author": "Fluence Labs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fluencelabs/aqua-lib/issues"
+  },
+  "homepage": "https://github.com/fluencelabs/aqua-lib#readme"
+}
