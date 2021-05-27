@@ -61,7 +61,11 @@ data Contact:
     addresses: []string
 
 service Op("op"):
-	identity()
+    identity()
+    string_to_b58(s: string) -> string
+    string_from_b58(b: string) -> string
+    bytes_to_b58(bs: []u8) -> string
+    bytes_from_b58(b: string) -> []u8
 
 service Peer("peer"):
     -- Checks if there is a direct connection to the peer identified by a given PeerId
@@ -92,7 +96,7 @@ service Peer("peer"):
 service Kademlia("kad"):
     -- Instructs node to return the locally-known nodes
     -- in the Kademlia neighborhood for a given key
-    neighborhood(peer: PeerId) -> []PeerId
+    neighborhood(key: PeerId, already_hashed: bool) -> []PeerId
 
 service Srv("srv"):
     -- Used to create a service on a certain node
