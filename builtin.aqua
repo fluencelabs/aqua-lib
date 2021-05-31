@@ -69,7 +69,7 @@ service Op("op"):
     -- Applies SHA256 to the given string
     -- Argument: s - string to apply sha256 to
     -- Returns: returns sha256 multihash encoded as base58
-    sha256_string(s: stribg) -> string
+    sha256_string(s: string) -> string
 
 service Peer("peer"):
     -- Checks if there is a direct connection to the peer identified by a given PeerId
