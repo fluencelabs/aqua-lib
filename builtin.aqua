@@ -134,6 +134,7 @@ service Srv("srv"):
 
     -- Resolves given alias to a service id
     -- If there's no such alias, throws an error
+    -- Returns: service id associated with the given alias
     resolve_alias(alias: string) -> string
 
     -- Retrieves the functional interface of a service running
