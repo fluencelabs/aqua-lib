@@ -66,7 +66,7 @@ service Op("op"):
     -- takes any number of arguments and wraps them into a single array
     array(a: string, b: string, c: string) -> []string
     -- takes any number of arrays and flattens them by concatenating
-    concat(a: [][]string) -> []string
+    concat(a: []string, b: []string, c: []string) -> []string
     -- takes a single argument and returns it back
     identity(s: ?string) -> ?string
     string_to_b58(s: string) -> string
