@@ -61,7 +61,14 @@ data Contact:
     addresses: []string
 
 service Op("op"):
-    identity()
+    -- does nothing
+    noop()
+    -- takes any number of arguments and wraps them into a single array
+    array(a: string, b: string, c: string) -> []string
+    -- takes any number of arrays and flattens them by concatenating
+    concat(a: []string, b: []string, c: []string) -> []string
+    -- takes a single argument and returns it back
+    identity(s: ?string) -> ?string
     string_to_b58(s: string) -> string
     string_from_b58(b: string) -> string
     bytes_to_b58(bs: []u8) -> string
