@@ -204,7 +204,12 @@ service Dist("dist"):
 
 service Script("script"):
     -- Adds the given script to a node
-    add(air_content: string, run_every: ?u64) -> string
+    -- Arguments:
+    --  air_script - raw AIR script without any undefined variables
+    --  interval   - if not set, script will be ran only once
+    --               if set, script will be ran once in the interval 
+    --               (NOTE: actual interval may vary by up to 3 seconds)
+    add(air_script: string, interval: ?u64) -> string
 
     -- Removes recurring script from a node. Only a creator of the script can delete it
     remove(script_id: string) -> bool
