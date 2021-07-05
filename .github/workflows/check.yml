@@ -1,0 +1,34 @@
+name: "check-compilation"
+
+on:
+  push:
+
+jobs:
+  check-compiles:
+    name: "Check Aqua compiles"
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - uses: actions/cache@v2
+        with:
+            path: ~/.npm
+            key: ${{ runner.os }}-v1-node-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: |
+                ${{ runner.os }}-v1-node
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+            node-version: 14
+
+      - name: Install aqua compiler
+        run: npm install -g @fluencelabs/aqua-cli
+
+      - name: Check compilation
+        run: aqua-cli -i . -o /tmp
