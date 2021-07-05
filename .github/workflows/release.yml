@@ -37,8 +37,10 @@ jobs:
         run: aqua-cli -i . -o /tmp
 
       ### Calculate FINAL_VERSION
-      - name: Install jq
-        run: sudo apt-get update && sudo apt-get --yes --force-yes install jq
+      - name: Download jq
+        run: |
+          curl -L https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 -o /usr/local/bin/jq
+          chmod +x /usr/local/bin/jq
 
       - name: Get version from npm and increment
         run: |
