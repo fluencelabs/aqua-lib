@@ -175,7 +175,7 @@ service Dist("dist"):
     --  logging_mask       - Binary mask to enable & disable logging targets. Targets are
     --                       configured in WasmLoggerBuilder::with_target_map
     --  mem_pages_count    - Maximum memory size accessible by a module in Wasm pages (64 Kb)
-    make_module_config(name: string, mem_pages_count: ?u32, logger_enabled: ?bool, preopened_files: ?[]string, envs: ?Pairs, mapped_dirs: ?Pairs, mounted_binaries: ?Pairs, logging_mask: ?i32) -> ModuleConfig
+    make_module_config(name: string, mem_pages_count: ?u32, logger_enabled: ?bool, preopened_files: ?[]string, envs: ?Pairs, mapped_dirs: ?Pairs, mounted_binaries: ?Pairs, logging_mask: ?s32) -> ModuleConfig
 
     -- Used to add modules to the node specified in the service call
     -- Arguments:
