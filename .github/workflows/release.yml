@@ -17,6 +17,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Install aqua compiler
+        run: npm install -g @fluencelabs/aqua-cli
+
+      - name: Check compilation
+        run: aqua-cli -i . -o /tmp
+
       ### Calculate FINAL_VERSION
       - name: Install jq
         run: sudo apt-get update && sudo apt-get --yes --force-yes install jq
@@ -45,26 +51,26 @@ jobs:
       - name: Set version to ${{ env.FINAL_VERSION }}
         run: yarn version --new-version ${{ env.FINAL_VERSION }} --no-git-tag-version
 
-      ### Publish to NPM registry
-      - uses: actions/setup-node@v1
-        with:
-          node-version: "14"
-          registry-url: "https://registry.npmjs.org"
+      # ### Publish to NPM registry
+      # - uses: actions/setup-node@v1
+      #   with:
+      #     node-version: "14"
+      #     registry-url: "https://registry.npmjs.org"
 
-      - run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN2 }}
+      # - run: npm publish --access public
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN2 }}
 
-      ### Create a release
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ env.FINAL_VERSION }}
-          release_name: Aqua lib ${{ env.FINAL_VERSION }}
-          body: |
-            [${{ env.FINAL_VERSION }} @ NPM registry](https://www.npmjs.com/package/${{ env.PKG_NAME }}/v/${{ env.FINAL_VERSION }})
-          draft: false
-          prerelease: false
+      # ### Create a release
+      # - name: Create Release
+      #   id: create_release
+      #   uses: actions/create-release@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     tag_name: ${{ env.FINAL_VERSION }}
+      #     release_name: Aqua lib ${{ env.FINAL_VERSION }}
+      #     body: |
+      #       [${{ env.FINAL_VERSION }} @ NPM registry](https://www.npmjs.com/package/${{ env.PKG_NAME }}/v/${{ env.FINAL_VERSION }})
+      #     draft: false
+      #     prerelease: false
