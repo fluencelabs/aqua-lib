@@ -68,13 +68,13 @@ service Op("op"):
     -- does nothing
     noop()
     -- returns length of the passed array
-    array_length(array: []string) -> u32
+    array_length(array: []⊤) -> u32
     -- takes any number of arguments and wraps them into a single array
-    array(a: string, b: ?string, c: ?string, d: ?string) -> []string
+    array(a: ⊤, b: ?⊤, c: ?⊤, d: ?⊤) -> []⊥
     -- takes any number of arrays and flattens them by concatenating
-    concat(a: []string, b: ?[]string, c: ?[]string, d: ?[]string) -> []string
+    concat(a: []⊤, b: ?[]⊤, c: ?[]⊤, d: ?[]⊤) -> []⊥
     -- takes a single argument and returns it back
-    identity(s: ?string) -> ?string
+    identity(s: ⊤) -> ⊥
     string_to_b58(s: string) -> Base58String
     string_from_b58(b: Base58String) -> string
     bytes_to_b58(bs: []u8) -> Base58String
