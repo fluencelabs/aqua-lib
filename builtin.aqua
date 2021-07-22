@@ -6,6 +6,7 @@ alias Bytes : []u8
 alias PeerId : string
 alias Pairs : [][]string
 alias Base58String : string
+alias Hash : string
 
 -- There are two types of dependencies: named and by-hash. 
 -- name:foobar      – specifies dependency by module name, points to a module with import name 'foobar'
@@ -83,6 +84,9 @@ service Op("op"):
     -- Argument: s - string to apply sha256 to (hash is applied to utf8 bytes of s)
     -- Returns: returns sha256 multihash encoded as base58
     sha256_string(s: string) -> Base58String
+    
+    -- concatenate strings (in AIR it takes any number of arguments)
+    concat_strings(a: string, b: string) -> string
 
 service Peer("peer"):
     -- Checks if there is a direct connection to the peer identified by a given PeerId
@@ -177,12 +181,24 @@ service Dist("dist"):
     --  mem_pages_count    - Maximum memory size accessible by a module in Wasm pages (64 Kb)
     make_module_config(name: string, mem_pages_count: ?u32, logger_enabled: ?bool, preopened_files: ?[]string, envs: ?Pairs, mapped_dirs: ?Pairs, mounted_binaries: ?Pairs, logging_mask: ?i32) -> ModuleConfig
 
+    -- Constructs a ModuleConfig structure
+    -- Arguments:
+    --  module_name        - import name of the module
+    default_module_config(module_name: string) -> ModuleConfig
+
+
     -- Used to add modules to the node specified in the service call
     -- Arguments:
     --  bytes – a base64 string containing the .wasm module to add.
     --  config – module info
     --  Returns: blake3 hash of the module
     add_module(wasm_b56_content: Bytes, conf: ModuleConfig) -> string
+
+    -- Adds module by copying it from Particle Vault directory
+    -- Arguments:
+    --  path   – path or a filename
+    --  config - module config
+    add_module_from_vault(path: string, config: ModuleConfig) -> Hash
 
     -- Get a list of modules available on the node
     list_modules() -> []Module
