@@ -46,7 +46,6 @@ jobs:
 
       - name: Publish to NPM
         run: |
-          echo github, wake up
           npm --no-git-tag-version version ${{ env.RELEASE_VERSION }}
           npm publish --access public
         env:
