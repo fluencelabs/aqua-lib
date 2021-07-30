@@ -1,5 +1,4 @@
 ## Aqua
-
 Aqua is a new-gen language for distributed systems.
 
 Aqua programs are executed on many peers, sequentially
@@ -10,12 +9,26 @@ Therefore, Aqua scripts are compiled into several targets at once, with AIR and 
 
 ## aqua-lib
 
-TBD
+API of the protocol-level functions in the Fluence Network.
 
-### usage
+This API is available on all peers powered by Fluence nodes, and a part of the API is available on JS/TS-based (browsers, NodeJS) peers.
 
-TBD
+### Documentation
+See [Aqua Book](https://fluence.dev/aqua-book/libraries/aqua-dht).
 
-### references
+### How to use it in Aqua
 
-- To get started writing aqua see: https://github.com/fluencelabs/aqua-playground
+Add `@fluencelabs/aqua-lib` to your package.json dependencies, and then in your Aqua script, import and use it:
+```haskell
+import "@fluencelabs/aqua-lib"
+
+-- gather Peer.identify from all nodes in the neighbourhood
+func getPeersInfo() -> []Info:
+    infos: *Info
+    nodes <- Kademlia.neighborhood(%init_peer_id%, nil, nil)
+    for node in nodes:
+        on node:
+            infos <- Peer.identify()
+    <- infos
+```
+
