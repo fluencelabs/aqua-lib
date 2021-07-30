@@ -69,7 +69,7 @@ jobs:
             ${{steps.github_release.outputs.changelog}}
 
             ## NPM package
-            [${{ env.FINAL_VERSION }} @ NPM registry](https://www.npmjs.com/package/${{ env.PKG_NAME }}/v/${{ env.FINAL_VERSION }})
+            [${{ env.RELEASE_VERSION }} @ NPM registry](https://www.npmjs.com/package/${{ env.PKG_NAME }}/v/${{ env.FINAL_VERSION }})
           draft: false
           prerelease: false
         env:
