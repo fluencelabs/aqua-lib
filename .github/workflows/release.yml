@@ -69,7 +69,7 @@ jobs:
             ${{steps.github_release.outputs.changelog}}
 
             ## NPM package
-            [${{ env.RELEASE_VERSION }} @ NPM registry](https://www.npmjs.com/package/${{ env.PKG_NAME }}/v/${{ env.FINAL_VERSION }})
+            [${{ env.RELEASE_VERSION }} @ NPM registry](https://www.npmjs.com/package/@fluencelabs/aqua-lib/v/${{ env.RELEASE_VERSION }})
           draft: false
           prerelease: false
         env:
