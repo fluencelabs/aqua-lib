@@ -68,18 +68,34 @@ data Contact:
 service Op("op"):
     -- does nothing
     noop()
+
     -- returns length of the passed array
     array_length(array: []string) -> u32
+
     -- takes any number of arguments and wraps them into a single array
-    array(a: string, b: ?string, c: ?string, d: ?string) -> []string
+    -- see the doc on varargs https://doc.fluence.dev/aqua-book/libraries/aqua-lib#functions-with-a-variable-number-of-arguments
+    array(a: string, b: string, c: string, d: string) -> []string
+
     -- takes any number of arrays and flattens them by concatenating
-    concat(a: []string, b: ?[]string, c: ?[]string, d: ?[]string) -> []string
+    -- see the doc on varargs https://doc.fluence.dev/aqua-book/libraries/aqua-lib#functions-with-a-variable-number-of-arguments
+    concat(a: []string, b: []string, c: []string, d: []string) -> []string
+
     -- takes a single argument and returns it back
     identity(s: ?string) -> ?string
+    
+    -- encodes string's utf8 bytes as base58
     string_to_b58(s: string) -> Base58String
+    
+    -- decodes base58 to bytes to utf8 string
+    -- throws error on invalid UTF8
     string_from_b58(b: Base58String) -> string
+    
+    -- encodes bytes as base58
     bytes_to_b58(bs: []u8) -> Base58String
+
+    -- decodes base58 to bytes
     bytes_from_b58(b: Base58String) -> []u8
+
     -- Applies SHA256 to the given string
     -- Argument: s - string to apply sha256 to (hash is applied to utf8 bytes of s)
     -- Returns: returns sha256 multihash encoded as base58
@@ -122,6 +138,7 @@ service Kademlia("kad"):
     --  already_hashed – default false; if set to true, key is considered to be a SHA256 multihash
     --  count – default 20; limits number of returned nodes
     neighborhood(key: Base58String, already_hashed: ?bool, count: ?u32) -> []PeerId
+
     -- Merges given lists and sorts them by distance to target
     -- Arguments:
     --  target – base58 string; result is sorted by XOR distance to target
