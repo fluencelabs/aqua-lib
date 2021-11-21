@@ -130,6 +130,10 @@ service Peer("peer"):
     -- Get Unix timestamp in seconds
     timestamp_sec() -> u64
 
+    -- Blocks for the given number of milliseconds. Meant to be used inside `par` blocks.
+    -- If `message` is passed, it's returned after duration has passed
+    timeout(duration_ms: u64, message: ?string) -> ?string
+
 service Kademlia("kad"):
     -- Instructs node to return the locally-known nodes
     -- in the Kademlia neighborhood for a given key
@@ -239,8 +243,7 @@ service Script("script"):
     --  interval   - if not set, script will be ran only once
     --               if set, script will be ran once in the interval
     --               (NOTE: actual interval may vary by up to 3 seconds)
-    -- TODO: change interval to ?u64 when node API is updated
-    add(air_script: string, interval: ?string) -> string
+    add(air_script: string, interval: ?u64) -> string
 
     -- Removes recurring script from a node. Only a creator of the script can delete it
     remove(script_id: string) -> bool
