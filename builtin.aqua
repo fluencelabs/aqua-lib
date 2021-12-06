@@ -250,4 +250,4 @@ service Script("script"):
 
     -- Returns a list of existing scripts on the node.
     -- Each object in the list is of the following structure
-    list() -> ScriptInfo
+    list() -> []ScriptInfo
