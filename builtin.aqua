@@ -253,7 +253,7 @@ service Script("script"):
     list() -> []ScriptInfo
 
 service Sig("sig"):
-    -- Signes data in the form byte array with the peer's KeyPair. Returns the signature as a byte array.
+    -- Signs data in the form byte array with the peer's KeyPair. Returns the signature as a byte array.
     -- Can only be called on the same peer the particle was initiated from.
     -- Accepts data from the following functions only:
     --   trust-graph.get_trust_bytes
