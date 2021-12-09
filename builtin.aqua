@@ -253,8 +253,8 @@ service Script("script"):
     list() -> []ScriptInfo
 
 service Sig("sig"):
-	-- Signes data in the form byte array with the peer's KeyPair. Returns the signature as byte array.
-	-- Can only be called on the same peer the particle was initiated from.
+    -- Signes data in the form byte array with the peer's KeyPair. Returns the signature as byte array.
+    -- Can only be called on the same peer the particle was initiated from.
     -- Accepts data from the following functions only:
     --   trust-graph.get_trust_bytes
     --   trust-graph.get_revocation_bytes
@@ -262,5 +262,5 @@ service Sig("sig"):
     --   registry.get_record_bytes
     sign(data: []u8) -> []u8
 
-	-- Given the data and signature both as byte arrays returns true if the signature is correct false otherwise.
-	verify(signature: []u8, data: []u8) -> bool
+    -- Given the data and signature both as byte arrays returns true if the signature is correct false otherwise.
+    verify(signature: []u8, data: []u8) -> bool
