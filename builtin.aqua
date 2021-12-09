@@ -264,5 +264,5 @@ service Sig("sig"):
     -- Returns: signature as a byte array
     sign(data: []u8) -> []u8
 
-    -- Given the data and signature both as byte arrays, returns true if the signature is correct, false otherwise.
+-- Given the data and signature both as byte arrays, returns true if the signature is correct, false otherwise.
     verify(signature: []u8, data: []u8) -> bool
