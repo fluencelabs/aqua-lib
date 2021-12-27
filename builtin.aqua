@@ -225,7 +225,7 @@ service Dist("dist"):
     list_modules() -> []Module
 
     -- Get the interface of a module
-    get_interface(module_id: string) -> Interface
+    get_module_interface(module_hash: string) -> Interface
 
     -- Creates Blueprint structure from from blueprint name and dependencies (modules)
     make_blueprint(name: string, dependencies: []Dependency) -> AddBlueprint
