@@ -36,6 +36,8 @@ data Interface:
 
 data Info:
     external_addresses: []string
+    node_version: string,
+    air_version: string,
 
 data ModuleConfig:
     name: string
