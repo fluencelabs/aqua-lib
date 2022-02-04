@@ -263,6 +263,7 @@ data SignResult:
     signature: ?[]u8
 
 -- Available only on FluenceJS peers
+-- The service can also be resolved by it's host peer id
 service Sig("sig"):
     -- Signs data with the service's private key. 
     -- Depending on implementation the service might check call params to restrict usage for security reasons.
