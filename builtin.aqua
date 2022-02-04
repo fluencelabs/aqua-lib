@@ -280,5 +280,5 @@ service Sig("sig"):
     -- Given the data and signature both as byte arrays, returns true if the signature is correct, false otherwise.
     verify(signature: []u8, data: []u8) -> bool
 
-    -- Gets the service's public key of.
+    -- Gets service's public key.
     get_pub_key() -> string
