@@ -17,7 +17,7 @@ service Math("math"):
     -- x – logarithm base
     log(x: i64, y: i64) -> u32
 
-service Cmp("cmp")
+service Compare("cmp"):
     -- x > y
     gt(x: i64, y: i64) -> bool
     -- x < y
@@ -29,7 +29,7 @@ service Cmp("cmp")
     cmp(x: i64, y: i64) -> i8
 
 
-service Array("array")
+service Array("array"):
     -- sum of all numbers in array
     add(xs: []i64) -> i64
     -- remove duplicates, not stable
