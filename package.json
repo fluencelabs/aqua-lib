@@ -4,8 +4,7 @@
   "description": "Aqua standard library",
   "files": [
     "builtin.aqua",
-    "math.aqua",
-    "debug.aqua"
+    "math.aqua"
   ],
   "scripts": {},
   "repository": {
