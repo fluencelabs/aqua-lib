@@ -33,10 +33,10 @@ jobs:
             node-version: 14
 
       - name: Install aqua compiler
-        run: npm install -g @fluencelabs/aqua-cli
+        run: npm install -g @fluencelabs/aqua
 
       - name: Check compilation
-        run: aqua-cli -i . -o /tmp
+        run: aqua -i . --dry
 
       ### Publish to NPM registry
       - uses: actions/setup-node@v1
