@@ -20,8 +20,12 @@ service Math("math"):
 service Compare("cmp"):
     -- x > y
     gt(x: i64, y: i64) -> bool
+    -- x >= y
+    gte(x: i64, y: i64) -> bool
     -- x < y
     lt(x: i64, y: i64) -> bool
+    -- x <= y
+    lte(x: i64, y: i64) -> bool
     -- compare x and y
     -- x < y, return -1
     -- x = y, return 0
