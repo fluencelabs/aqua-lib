@@ -31,7 +31,7 @@ service Compare("cmp"):
 
 service Array("array"):
     -- sum of all numbers in array
-    add(xs: []i64) -> i64
+    sum(xs: []i64) -> i64
     -- remove duplicates, not stable
     dedup(xs: []string) -> []string
     -- set-intersection of two arrays, not stable, deduplicates
