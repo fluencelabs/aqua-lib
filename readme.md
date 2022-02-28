@@ -20,7 +20,7 @@ See [Aqua Book](https://fluence.dev/aqua-book/libraries/aqua-dht).
 
 Add `@fluencelabs/aqua-lib` to your package.json dependencies, and then in your Aqua script, import and use it:
 ```haskell
-import "@fluencelabs/aqua-lib"
+import "@fluencelabs/aqua-lib/builtin.aqua"
 
 -- gather Peer.identify from all nodes in the neighbourhood
 func getPeersInfo() -> []Info:
