@@ -36,7 +36,7 @@ jobs:
         run: npm install -g @fluencelabs/aqua
 
       - name: Check compilation
-        run: aqua -i . -o /tmp
+        run: aqua -i . --dry
 
       ### Publish to NPM registry
       - uses: actions/setup-node@v1

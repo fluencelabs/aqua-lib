@@ -1,0 +1,46 @@
+service Math("math"):
+    -- x + y
+    add(x: i64, y: i64) -> i64
+    -- x - y
+    sub(x: i64, y: i64) -> i64
+    -- x * y
+    mul(x: i64, y: i64) -> i64
+    -- floor(x * y)
+    fmul(x: f64, y: f64) -> i64
+    -- x / y
+    div(x: i64, y: i64) -> i64
+    -- division remainder, x % y
+    rem(x: i64, y: i64) -> i64
+    -- x^y
+    pow(x: i64, y: u32) -> i64
+    -- logarithm of y to base x
+    -- x – logarithm base
+    log(x: i64, y: i64) -> u32
+
+service Compare("cmp"):
+    -- x > y
+    gt(x: i64, y: i64) -> bool
+    -- x >= y
+    gte(x: i64, y: i64) -> bool
+    -- x < y
+    lt(x: i64, y: i64) -> bool
+    -- x <= y
+    lte(x: i64, y: i64) -> bool
+    -- compare x and y
+    -- x < y, return -1
+    -- x = y, return 0
+    -- x > y, return 1
+    cmp(x: i64, y: i64) -> i8
+
+
+service Array("array"):
+    -- sum of all numbers in array
+    sum(xs: []i64) -> i64
+    -- remove duplicates, not stable
+    dedup(xs: []string) -> []string
+    -- set-intersection of two arrays, not stable, deduplicates
+    intersect(xs: []string, ys: []string) -> []string
+    -- set-difference of two arrays, not stable, deduplicates
+    diff(xs: []string, ys: []string) -> []string
+    -- symmetric difference of two arrays, not stable, deduplicates
+    sdiff(xs: []string, ys: []string) -> []string

@@ -3,7 +3,8 @@
   "version": "0.1.1",
   "description": "Aqua standard library",
   "files": [
-    "builtin.aqua"
+    "builtin.aqua",
+    "math.aqua"
   ],
   "scripts": {},
   "repository": {
