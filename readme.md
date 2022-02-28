@@ -14,7 +14,7 @@ API of the protocol-level functions in the Fluence Network.
 This API is available on all peers powered by Fluence nodes, and a part of the API is available on JS/TS-based (browsers, NodeJS) peers.
 
 ### Documentation
-See [Aqua Book](https://fluence.dev/aqua-book/libraries/aqua-dht).
+See [Aqua Book](https://doc.fluence.dev/aqua-book/libraries/aqua-lib).
 
 ### How to use it in Aqua
 
