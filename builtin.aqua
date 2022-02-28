@@ -284,3 +284,8 @@ service Sig("sig"):
 
     -- Gets service's public key.
     get_pub_key() -> string
+
+-- Service for debugging purposes only
+service Debug("debug"):
+    -- Convert any object into a string
+    stringify(o: ⊤) -> string
