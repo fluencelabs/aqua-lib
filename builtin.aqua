@@ -84,14 +84,14 @@ service Op("op"):
 
     -- takes a single argument and returns it back
     identity(s: ?string) -> ?string
-    
+
     -- encodes string's utf8 bytes as base58
     string_to_b58(s: string) -> Base58String
-    
+
     -- decodes base58 to bytes to utf8 string
     -- throws error on invalid UTF8
     string_from_b58(b: Base58String) -> string
-    
+
     -- encodes bytes as base58
     bytes_to_b58(bs: []u8) -> Base58String
 
@@ -202,7 +202,7 @@ service Dist("dist"):
     --  logging_mask       - Binary mask to enable & disable logging targets. Targets are
     --                       configured in WasmLoggerBuilder::with_target_map
     --  mem_pages_count    - (deprecated) Maximum memory size accessible by a module in Wasm pages (64 Kb)
-    --  max_heap_size      - Maximum module heap size, in bytes 
+    --  max_heap_size      - Maximum module heap size, in bytes
     make_module_config(name: string, mem_pages_count: ?u32, max_heap_size: ?string, logger_enabled: ?bool, preopened_files: ?[]string, envs: ?Pairs, mapped_dirs: ?Pairs, mounted_binaries: ?Pairs, logging_mask: ?i32) -> ModuleConfig
 
     -- Constructs a ModuleConfig structure
@@ -266,13 +266,13 @@ data SignResult:
 -- Available only on FluenceJS peers
 -- The service can also be resolved by it's host peer id
 service Sig("sig"):
-    -- Signs data with the service's private key. 
+    -- Signs data with the service's private key.
     -- Depending on implementation the service might check call params to restrict usage for security reasons.
     -- By default it is only allowed to be used on the same peer the particle was initiated
     -- and accepts data only from the following sources:
     --   trust-graph.get_trust_bytes
     --   trust-graph.get_revocation_bytes
-    --   registry.get_key_bytes
+    --   registry.get_route_bytes
     --   registry.get_record_bytes
     --   registry.get_host_record_bytes
     -- Argument: data - byte array to sign
