@@ -247,10 +247,7 @@ service Script("script"):
     --             - if set, script will be ran once in the interval
     --             - if not set, script will be ran only once
     --               (NOTE: an actual interval may vary by up to 3 seconds)
-    --  delay      - delay script run time in seconds
-    --             - if set, script will be delayed on the delay time
-    --             - if not set, script will be delayed on a random value in [0, interval]
-    add(air_script: string, interval: ?u64, delay: ?u64) -> string
+    add(air_script: string, interval: ?u64) -> string
 
     -- Removes recurring script from a node. Only a creator of the script can delete it
     remove(script_id: string) -> bool
