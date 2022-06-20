@@ -249,6 +249,15 @@ service Script("script"):
     --               (NOTE: an actual interval may vary by up to 3 seconds)
     add(air_script: string, interval: ?u64) -> string
 
+    -- Adds the script from the given path to a node
+    -- Arguments:
+    --  path       - path to the AIR script without any undefined variables in the particle file vault
+    --  interval   - time to next run of the script in seconds
+    --             - if set, script will be ran once in the interval
+    --             - if not set, script will be ran only once
+    --               (NOTE: an actual interval may vary by up to 3 seconds)
+    add_from_vault(path: string, interval: ?u64) -> string
+
     -- Removes recurring script from a node. Only a creator of the script can delete it
     remove(script_id: string) -> bool
 
