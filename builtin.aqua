@@ -107,22 +107,6 @@ service Op("op"):
     concat_strings(a: string, b: string) -> string
 
 service Peer("peer"):
-    -- Checks if there is a direct connection to the peer identified by a given PeerId
-    -- Argument: PeerId – id of the peer to check if there's a connection with
-    -- Returns: bool - true if connected to the peer, false otherwise
-    is_connected(peer: PeerId) -> bool
-
-    -- Initiates a connection to the specified peer
-    -- Arguments:
-    --  id - id of the target peer
-    --  multiaddrs – an array of target peer's addresses
-    -- Returns: bool - true if connection was successful
-    connect(id: PeerId, multiaddrs: ?[]string) -> bool
-    -- Resolves the contact of a peer via Kademlia
-    -- Argument: PeerId – id of the target peer
-    -- Returns: Contact - true if connection was successful
-    get_contact(peer: PeerId) -> Contact
-
     -- Get information about the peer
     identify() -> Info
 
@@ -135,6 +119,34 @@ service Peer("peer"):
     -- Blocks for the given number of milliseconds. Meant to be used within `par` blocks.
     -- message is returned after duration has passed
     timeout(duration_ms: u64, message: string) -> string
+
+    ---- Low level functions for accessing connection pool
+
+    -- Checks if there is a direct connection to the peer identified by a given PeerId
+    -- Argument: PeerId – id of the peer to check if there's a connection with
+    -- Returns: bool - true if connected to the peer, false otherwise
+    -- NOTE:
+    --  This is a very low-level function, it most likely won't fit your goals.
+    --  It's almost always better to use race pattern to check connectivity.
+    --  See https://doc.fluence.dev/aqua-book/language/flow/parallel#timeout-and-race-patterns
+    is_connected(peer: PeerId) -> bool
+
+    -- Initiates a connection to the specified peer
+    -- Arguments:
+    --  id - id of the target peer
+    --  multiaddrs – an array of target peer's addresses
+    -- Returns: bool - true if connection was successful
+    -- NOTE:
+    --  This is a low-level function, it most likely won't fit your goals.
+    --  Most often you just need to use `on id:` and connection will be established automatically.
+    connect(id: PeerId, multiaddrs: []string) -> bool
+
+    -- Returns known multiaddresses of a peer
+    -- Argument: PeerId – id of the target peer
+    -- Returns:
+    --  Contact - if target peer is connected to current peer,
+    --  return data structure with multiaddresses inside, and nil otherwise.
+    get_contact(peer: PeerId) -> ?Contact
 
 service Kademlia("kad"):
     -- Instructs node to return the locally-known nodes

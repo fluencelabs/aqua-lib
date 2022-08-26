@@ -26,11 +26,11 @@ jobs:
             key: ${{ runner.os }}-v1-node-${{ hashFiles('**/package-lock.json') }}
             restore-keys: |
                 ${{ runner.os }}-v1-node
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-            node-version: 14
+            node-version: 16
 
       - name: Install aqua compiler
         run: npm install -g @fluencelabs/aqua
@@ -41,7 +41,7 @@ jobs:
       ### Publish to NPM registry
       - uses: actions/setup-node@v1
         with:
-          node-version: "14"
+          node-version: "16"
           registry-url: "https://registry.npmjs.org"
 
       - name: Publish to NPM
