@@ -19,6 +19,7 @@ data Service:
     id: string
     blueprint_id: string
     owner_id: string
+    aliases: []string
 
 data FunctionSignature:
     arguments: []Argument
