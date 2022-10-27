@@ -68,6 +68,50 @@ data Contact:
     peer_id: string
     addresses: []string
 
+-- A collection of measurements of a stat.
+-- `avg` and `total` fields are computed over all measured stats and
+-- `series` stores only several last measurements. The number of measurements
+--  is configured on each peer.
+data SeriesStat:
+   avg: f64
+   series: []f64
+   total: f64
+
+data Stats:
+  -- Number of successful request
+  success_req_count: u64
+  -- Number of failed request
+  failed_req_count: u64
+  -- Duration of call execution in seconds
+  call_time_sec: SeriesStat
+  -- Amount of addintionally allocated memory after a call
+  memory_deltas_bytes: SeriesStat
+  -- Timestamps of the last measurments
+  timestamps: []u64
+
+data FunctionStat:
+  name: string
+  -- Series contain last measurements that were taken from last N calls to this function
+  stats: Stats
+
+data ServiceStat:
+  -- Stats for the requested service in total.
+  -- Series contain last measurements that were taken from last N calls to the service
+  total_stats: Stats
+  -- Stats for each interface function of the service
+  functions_stats: []FunctionStat
+
+data StatResult:
+  status: bool
+  error: string
+  result: ?ServiceStat
+
+data MemoryStat:
+  -- module name
+  name: string
+  memory_size_bytes: u64
+  max_memory_size_bytes: u64
+
 service Op("op"):
     -- does nothing
     noop()
@@ -307,6 +351,14 @@ service Sig("sig"):
 
     -- Gets the peer id of the service's key pair.
     get_peer_id() -> string
+
+-- Available  only on rust peers
+-- Aquire service statistic
+service Stat("stat"):
+  -- Detailed stats for the service and its interface functions
+  service_stat(service_id: string) -> StatResult
+  -- The amount of memeory allocated for each module of the service.
+  service_memory(service_id: string) -> []MemoryStat
 
 -- Service for debugging purposes only
 service Debug("debug"):
