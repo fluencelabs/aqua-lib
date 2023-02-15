@@ -312,7 +312,7 @@ service Dist("dist"):
     list_blueprints() -> []Blueprint
     
     -- Get a single blueprint
-    get_blueprint(id: string) -> Blueprint
+    get_blueprint(blueprint_id: string) -> Blueprint
 
 service Script("script"):
     -- Adds the given script to a node
