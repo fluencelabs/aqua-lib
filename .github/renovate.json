@@ -3,8 +3,6 @@
   "extends": [
     "config:base"
   ],
-  "semanticCommitType": "chore",
-  "semanticCommitScope": "deps",
   "enabledManagers": ["npm", "github-actions"],
   "schedule": "every weekend",
   "packageRules": [
@@ -21,8 +19,6 @@
       "matchPackagePatterns": [
         "@fluencelabs/.*"
       ],
-      "semanticCommitType": "fix",
-      "semanticCommitScope": "deps",
       "schedule": "at any time"
     },
     {
