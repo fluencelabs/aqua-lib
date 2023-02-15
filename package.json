@@ -16,6 +16,9 @@
     "aqua",
     "fluence"
   ],
+  "scripts": {
+    "compile-dry": "aqua -i . --dry"
+  },
   "author": "Fluence Labs",
   "license": "MIT",
   "bugs": {
