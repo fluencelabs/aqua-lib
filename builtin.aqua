@@ -40,8 +40,18 @@ data Info:
     node_version: string
     air_version: string
 
+data ModuleWASIConfig:
+    envs: ?Pairs
+    mapped_dirs: ?Pairs
+    mounted_binaries: ?Pairs
+
 data ModuleConfig:
     name: string
+    mem_pages_count: ?u32
+    max_heap_size: ?string
+    logger_enabled: ?bool
+    logging_mask: ?i32
+    wasi: ?ModuleWASIConfig
 
 data Module:
     name: string
