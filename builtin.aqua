@@ -20,6 +20,7 @@ data Service:
     blueprint_id: string
     owner_id: string
     aliases: []string
+    worker_id: string
 
 data FunctionSignature:
     arguments: []Argument
@@ -252,6 +253,10 @@ service Srv("srv"):
     -- on the node specified in the service call
     -- Argument: service_id – ID of the service whose interface you want to retrieve.
     get_interface(service_id: string) -> Interface
+    
+    -- Retrieves information about service
+    -- Argument: service_id – ID or alias of the service
+    info(service_id: string) -> Service
 
 service Dist("dist"):
     -- Constructs a ModuleConfig structure
@@ -305,6 +310,9 @@ service Dist("dist"):
     -- Used to get the blueprints available on the node specified in the service call.
     -- A blueprint is an object of the following structure
     list_blueprints() -> []Blueprint
+    
+    -- Get a single blueprint
+    get_blueprint(id: string) -> Blueprint
 
 service Script("script"):
     -- Adds the given script to a node
