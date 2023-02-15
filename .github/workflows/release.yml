@@ -1,76 +1,124 @@
-name: "publish-release"
+name: "release-please"
 
 on:
   push:
-    tags:
-      - "v*"
+    branches:
+      - "main"
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.ref }}"
+
+env:
+  FORCE_COLOR: true
 
 jobs:
-  npm-publish:
-    name: "Publish"
+  release-please:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
+
+    outputs:
+      releases-created: ${{ steps.release.outputs.releases_created }}
+
+      fluence-cli-release-created: ${{ steps.release.outputs['release_created'] }}
+      fluence-cli-tag-name: ${{ steps.release.outputs['tag_name'] }}
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set RELEASE_VERSION
-        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-
-      - uses: actions/cache@v2
+      - name: Run release-please
+        id: release
+        uses: google-github-actions/release-please-action@v3
         with:
-            path: ~/.npm
-            key: ${{ runner.os }}-v1-node-${{ hashFiles('**/package-lock.json') }}
-            restore-keys: |
-                ${{ runner.os }}-v1-node
+          token: ${{ secrets.FLUENCEBOT_RELEASE_PLEASE_PAT }}
+          command: manifest
+          config-file: .github/release-please/config.json
+          manifest-file: .github/release-please/manifest.json
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v1
+      - name: Show output from release-please
+        if: steps.release.outputs.releases_created
+        env:
+          RELEASE_PLEASE_OUTPUT: ${{ toJSON(steps.release.outputs) }}
+        run: echo "${RELEASE_PLEASE_OUTPUT}" | jq
+
+  aqua-lib:
+    if: needs.release-please.outputs.fluence-cli-release-created
+    runs-on: ubuntu-latest
+    needs:
+      - release-please
+
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Import secrets
+        uses: hashicorp/vault-action@v2.4.3
         with:
-            node-version: 16
+          url: https://vault.fluence.dev
+          path: jwt/github
+          role: ci
+          method: jwt
+          jwtGithubAudience: "https://github.com/fluencelabs"
+          jwtTtl: 300
+          exportToken: false
+          secrets: |
+            kv/npmjs/fluencebot token | NODE_AUTH_TOKEN
 
-      - name: Install aqua compiler
-        run: npm install -g @fluencelabs/aqua
-
-      - name: Check compilation
-        run: aqua -i . --dry
-
-      ### Publish to NPM registry
-      - uses: actions/setup-node@v1
+      - name: Setup node
+        uses: actions/setup-node@v3
         with:
           node-version: "16"
           registry-url: "https://registry.npmjs.org"
+          cache: "npm"
 
-      - name: Publish to NPM
+      - run: npm i
+
+      - name: Publish to npm registry
+        run: npm publish --access public --tag unstable
+
+  slack:
+    if: always()
+    name: "Notify"
+    runs-on: ubuntu-latest
+
+    needs:
+      - release-please
+      - aqua-lib
+
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - uses: lwhiteley/dependent-jobs-result-check@v1
+        id: status
+        with:
+          statuses: failure
+          dependencies: ${{ toJSON(needs) }}
+
+      - name: Log output
         run: |
-          npm --no-git-tag-version version ${{ env.RELEASE_VERSION }}
-          npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN2 }}
+          echo "statuses:" "${{ steps.status.outputs.statuses }}"
+          echo "jobs:" "${{ steps.status.outputs.jobs }}"
+          echo "found any?:" "${{ steps.status.outputs.found }}"
 
-      ### Create a release
-      - name: Build Changelog
-        id: github_release
-        uses: mikepenz/release-changelog-builder-action@v1
+      - name: Import secrets
+        uses: hashicorp/vault-action@v2.4.3
         with:
-          configuration: ".github/workflows/changelog_config.json"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          url: https://vault.fluence.dev
+          path: jwt/github
+          role: ci
+          method: jwt
+          jwtGithubAudience: "https://github.com/fluencelabs"
+          jwtTtl: 300
+          exportToken: false
+          secrets: |
+            kv/slack/release-please webhook | SLACK_WEBHOOK_URL
 
-      - name: Release
-        uses: softprops/action-gh-release@v1
+      - uses: ravsamhq/notify-slack-action@v2
+        if: steps.status.outputs.found == 'true'
         with:
-          name: aqua-lib ${{ env.RELEASE_VERSION }}
-          tag_name: ${{ env.RELEASE_VERSION }}
-          body: |
-            ${{steps.github_release.outputs.changelog}}
-
-            ## NPM package
-            [${{ env.RELEASE_VERSION }} @ NPM registry](https://www.npmjs.com/package/@fluencelabs/aqua-lib/v/${{ env.RELEASE_VERSION }})
-          draft: false
-          prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          status: "failure"
+          notification_title: "*{workflow}* has {status_message}"
+          message_format: "${{ steps.status.outputs.jobs }} {status_message} in <{repo_url}|{repo}>"
+          footer: "<{run_url}>"
