@@ -1,34 +1,28 @@
-## Aqua
-Aqua is a new-gen language for distributed systems.
+# Aqua-lib
 
-Aqua programs are executed on many peers, sequentially
-or in parallel, forming a single-use coordination network.
+[![npm](https://img.shields.io/npm/v/@fluencelabs/aqua-lib)](https://www.npmjs.com/package/@fluencelabs/aqua-lib)
 
-Aqua's runtime is heterogeneous: it includes browsers, servers, devices, all involved in solving a single task.
-Therefore, Aqua scripts are compiled into several targets at once, with AIR and Typescript as a default.
+[Aqua](https://github.com/fluencelabs/aqua) is a new-generation language for distributed systems, the core of [Fluence](https://fluence.network). Aqua programs are executed on many peers, sequentially or in parallel, forming a single-use coordination network. Aqua's runtime is heterogeneous: it includes browsers, servers, devices, all involved in solving a single task. Therefore, Aqua scripts are compiled into several targets at once, with AIR and Typescript as a default.
 
-## aqua-lib
+**Aqua-lib** is the API of the protocol-level functions in the [Fluence](https://github.com/fluencelabs/fluence-cli) network. This API is available on all peers powered by Fluence nodes and a part of the API is available on JS/TS-based peers.
 
-API of the protocol-level functions in the Fluence Network.
 
-This API is available on all peers powered by Fluence nodes, and a part of the API is available on JS/TS-based (browsers, NodeJS) peers.
+## Documentation
 
-### Documentation
-See [Aqua Book](https://doc.fluence.dev/aqua-book/libraries/aqua-lib).
+Comprehensive documentation on Fluence is available [here](https://fluence.network/). Detailed instructions and usage examples on Aqua can be found in our dedicated [Aqua Book](https://fluence.dev/docs/aqua-book/introduction).
 
-### How to use it in Aqua
 
-Add `@fluencelabs/aqua-lib` to your package.json dependencies, and then in your Aqua script, import and use it:
-```haskell
-import "@fluencelabs/aqua-lib/builtin.aqua"
+## Support
 
--- gather Peer.identify from all nodes in the neighbourhood
-func getPeersInfo() -> []Info:
-    infos: *Info
-    nodes <- Kademlia.neighborhood(%init_peer_id%, nil, nil)
-    for node in nodes:
-        on node:
-            infos <- Peer.identify()
-    <- infos
-```
+Please, file an [issue](https://github.com/fluencelabs/aqua-lib/issues) if you find a bug. You can also contact us at [Discord](https://discord.com/invite/5qSnPZKh7u) or [Telegram](https://t.me/fluence_project).  We will do our best to resolve the issue ASAP.
+
+
+## Contributing
+
+Any interested person is welcome to contribute to the project. Please, make sure you read and follow some basic [rules](./CONTRIBUTING.md).
+
+
+## License
+
+All software code is copyright (c) Fluence Labs, Inc. under the [Apache-2.0](./LICENSE) license.
 
