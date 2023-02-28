@@ -26,6 +26,6 @@
   },
   "homepage": "https://github.com/fluencelabs/aqua-lib#readme",
   "devDependencies": {
-    "@fluencelabs/aqua": "0.9.4"
+    "@fluencelabs/aqua": "0.10.3"
   }
 }
