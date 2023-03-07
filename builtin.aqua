@@ -20,7 +20,6 @@ data Service:
     blueprint_id: string
     owner_id: string
     aliases: []string
-    worker_aliases: []string
     worker_id: string
 
 data FunctionSignature:
@@ -349,7 +348,7 @@ data SignResult:
     -- Signature as byte array. Will be null if the call is not successful
     signature: ?[]u8
 
--- Available only on FluenceJS peers
+-- Available only on FluenceJS and rust peers
 -- The service can also be resolved by it's host peer id
 service Sig("sig"):
     -- Signs data with the service's private key.
@@ -358,9 +357,9 @@ service Sig("sig"):
     -- and accepts data only from the following sources:
     --   trust-graph.get_trust_bytes
     --   trust-graph.get_revocation_bytes
-    --   registry.get_route_bytes
+    --   registry.get_key_bytes (for FluenceJS only)
     --   registry.get_record_bytes
-    --   registry.get_host_record_bytes
+    --   registry.get_record_metadata_bytes
     -- Argument: data - byte array to sign
     -- Returns: signature as SignResult structure
     sign(data: []u8) -> SignResult
@@ -371,7 +370,7 @@ service Sig("sig"):
     -- Gets the peer id of the service's key pair.
     get_peer_id() -> string
 
--- Available  only on rust peers
+-- Available only on rust peers
 -- Aquire service statistic
 service Stat("stat"):
   -- Detailed stats for the service and its interface functions
@@ -383,3 +382,16 @@ service Stat("stat"):
 service Debug("debug"):
     -- Convert any object into a string
     stringify(o: ⊤) -> string
+
+-- Available only on rust peers
+service Worker("worker"):
+    -- Creates new worker associated with `deal_id` if provided, with `init_peer_id` otherwise.
+    -- Throws an error if worker exists.
+    create(deal_id: ?string) -> PeerId
+    -- Returns worker peer id associated with `deal_id` if provided, with `init_peer_id` otherwise.
+    -- Throws an error if worker doesn't exist.
+    get_peer_id(deal_id: ?string) -> PeerId
+    -- Removes worker with all deployed spells and services.
+    -- Throws an error if worker doesn't exist.
+    -- Worker can be removed only by worker creator or worker itself.
+    remove(worker_id: PeerId)
