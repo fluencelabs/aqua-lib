@@ -382,16 +382,3 @@ service Stat("stat"):
 service Debug("debug"):
     -- Convert any object into a string
     stringify(o: ⊤) -> string
-
--- Available only on rust peers
-service Worker("worker"):
-    -- Creates new worker associated with `deal_id` if provided, with `init_peer_id` otherwise.
-    -- Throws an error if worker exists.
-    create(deal_id: ?string) -> PeerId
-    -- Returns worker peer id associated with `deal_id` if provided, with `init_peer_id` otherwise.
-    -- Throws an error if worker doesn't exist.
-    get_peer_id(deal_id: ?string) -> PeerId
-    -- Removes worker with all deployed spells and services.
-    -- Throws an error if worker doesn't exist.
-    -- Worker can be removed only by worker creator or worker itself.
-    remove(worker_id: PeerId)

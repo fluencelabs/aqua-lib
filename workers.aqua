@@ -1,0 +1,28 @@
+import PeerId from "./builtin.aqua"
+
+-- Available only on rust peers
+service DealWorker("worker"):
+    -- Creates new worker associated with `deal_id`.
+    -- Throws an error if worker exists.
+    create(deal_id: ?string) -> PeerId
+    -- Returns worker peer id associated with `deal_id`.
+    -- Throws an error if worker doesn't exist.
+    get_peer_id(deal_id: ?string) -> PeerId
+    -- Removes worker with all deployed spells and services.
+    -- Throws an error if worker doesn't exist.
+    -- Worker can be removed only by worker creator or worker itself.
+    remove(worker_id: PeerId)
+
+-- Available only on rust peers
+-- Suitable for direct hosting
+service Worker("worker"):
+    -- Creates new worker associated with `init_peer_id`.
+    -- Throws an error if worker exists.
+    create() -> PeerId
+    -- Returns worker peer id associated with `init_peer_id`.
+    -- Throws an error if worker doesn't exist.
+    get_peer_id() -> PeerId
+    -- Removes worker with all deployed spells and services.
+    -- Throws an error if worker doesn't exist.
+    -- Worker can be removed only by worker creator or worker itself.
+    remove(worker_id: PeerId)
