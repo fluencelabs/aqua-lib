@@ -13,6 +13,7 @@ service DealWorker("worker"):
     -- Worker can be removed only by worker creator or worker itself.
     remove(worker_id: PeerId)
 
+
 -- Available only on rust peers
 -- Suitable for direct hosting
 service Worker("worker"):
