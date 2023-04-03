@@ -40,6 +40,8 @@ data Info:
     external_addresses: []string
     node_version: string
     air_version: string
+    spell_version: string
+    allowed_binaries: []string
 
 data ModuleWASIConfig:
     envs: ?Pairs
