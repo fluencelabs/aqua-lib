@@ -382,3 +382,6 @@ service Stat("stat"):
 service Debug("debug"):
     -- Convert any object into a string
     stringify(o: ⊤) -> string
+    
+service Console("run-console"):
+    print(any: ⊤)
