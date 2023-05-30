@@ -1,13 +1,15 @@
 {
   "name": "@fluencelabs/aqua-lib",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Aqua standard library",
   "files": [
     "builtin.aqua",
     "math.aqua",
     "binary.aqua"
   ],
-  "scripts": {},
+  "scripts": {
+    "compile-dry": "aqua -i . --dry"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fluencelabs/aqua-lib.git"
@@ -16,9 +18,6 @@
     "aqua",
     "fluence"
   ],
-  "scripts": {
-    "compile-dry": "aqua -i . --dry"
-  },
   "author": "Fluence Labs",
   "license": "MIT",
   "bugs": {
