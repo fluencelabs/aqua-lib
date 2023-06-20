@@ -300,6 +300,11 @@ service Dist("dist"):
     -- Add an IPLD blueprint to the node
     add_blueprint(blueprint: IPLDBlueprint) -> string
 
+    -- Loads blueprint by copying it from Particle Vault directory
+    -- Arguments:
+    --  blueprint_path   – path or a filename
+    load_blueprint(blueprint_path: string) -> IPLDBlueprint
+
     -- Used to get the blueprints available on the node specified in the service call.
     -- A blueprint is an object of the following structure
     list_blueprints() -> []Blueprint
