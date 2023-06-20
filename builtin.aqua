@@ -7,13 +7,8 @@ alias PeerId : string
 alias Pairs : [][]string
 alias Base58String : string
 alias Hash : string
-
--- There are two types of dependencies: named and by-hash.
--- name:foobar      – specifies dependency by module name, points to a module with import name 'foobar'
--- hash:04dc884...  – specifies dependency by module hash
--- By-hash dependencies are preffered since they are determenistic
--- while by-name dependency can yield different modules at different points in time
-alias Dependency : string
+alias IPLDBlueprint : string
+alias CID : string
 
 data Service:
     id: string
@@ -61,14 +56,10 @@ data Module:
     hash: string
     config: ModuleConfig
 
-data AddBlueprint:
-    name: string
-    dependencies: []Dependency
-
 data Blueprint:
     id: string
     name: string
-    dependencies: []Dependency
+    dependencies: []CID
 
 data ScriptInfo:
     id: string
@@ -304,10 +295,10 @@ service Dist("dist"):
     -- Get the interface of a module
     get_module_interface(module_hash: string) -> Interface
 
-    -- Creates Blueprint structure from from blueprint name and dependencies (modules)
-    make_blueprint(name: string, dependencies: []Dependency) -> AddBlueprint
-    -- Add a blueprint to the node
-    add_blueprint(blueprint: AddBlueprint) -> string
+    -- Creates IPLD Blueprint structure from from blueprint name and dependencies (modules)
+    make_blueprint(name: string, dependencies: []CID) -> IPLDBlueprint
+    -- Add an IPLD blueprint to the node
+    add_blueprint(blueprint: IPLDBlueprint) -> string
 
     -- Used to get the blueprints available on the node specified in the service call.
     -- A blueprint is an object of the following structure
@@ -382,6 +373,6 @@ service Stat("stat"):
 service Debug("debug"):
     -- Convert any object into a string
     stringify(o: ⊤) -> string
-    
+
 service Console("run-console"):
     print(any: ⊤)
