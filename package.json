@@ -5,7 +5,8 @@
   "files": [
     "builtin.aqua",
     "math.aqua",
-    "binary.aqua"
+    "binary.aqua",
+    "workers.aqua"
   ],
   "scripts": {
     "compile-dry": "aqua -i . --dry"
