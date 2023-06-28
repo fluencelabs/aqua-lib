@@ -7,13 +7,8 @@ alias PeerId : string
 alias Pairs : [][]string
 alias Base58String : string
 alias Hash : string
-
--- There are two types of dependencies: named and by-hash.
--- name:foobar      – specifies dependency by module name, points to a module with import name 'foobar'
--- hash:04dc884...  – specifies dependency by module hash
--- By-hash dependencies are preffered since they are determenistic
--- while by-name dependency can yield different modules at different points in time
-alias Dependency : string
+alias IPLDBlueprint : string
+alias CID : string
 
 data Service:
     id: string
@@ -61,14 +56,10 @@ data Module:
     hash: string
     config: ModuleConfig
 
-data AddBlueprint:
-    name: string
-    dependencies: []Dependency
-
 data Blueprint:
     id: string
     name: string
-    dependencies: []Dependency
+    dependencies: []CID
 
 data ScriptInfo:
     id: string
@@ -304,10 +295,15 @@ service Dist("dist"):
     -- Get the interface of a module
     get_module_interface(module_hash: string) -> Interface
 
-    -- Creates Blueprint structure from from blueprint name and dependencies (modules)
-    make_blueprint(name: string, dependencies: []Dependency) -> AddBlueprint
-    -- Add a blueprint to the node
-    add_blueprint(blueprint: AddBlueprint) -> string
+    -- Creates IPLD Blueprint structure from blueprint name and dependencies (modules)
+    make_blueprint(name: string, dependencies: []CID) -> IPLDBlueprint
+    -- Add an IPLD blueprint to the node
+    add_blueprint(blueprint: IPLDBlueprint) -> string
+
+    -- Loads blueprint by copying it from Particle Vault directory
+    -- Arguments:
+    --  blueprint_path   – path in Particle Vault
+    load_blueprint(blueprint_path: string) -> IPLDBlueprint
 
     -- Used to get the blueprints available on the node specified in the service call.
     -- A blueprint is an object of the following structure
@@ -335,7 +331,7 @@ service Script("script"):
     --               (NOTE: an actual interval may vary by up to 3 seconds)
     add_from_vault(path: string, interval: ?u64) -> string
 
-    -- Removes recurring script from a node. Only a creator of the script can delete it
+    -- Removes recurring script from a node. Only the creator of the script can delete it
     remove(script_id: string) -> bool
 
     -- Returns a list of existing scripts on the node.
@@ -382,6 +378,6 @@ service Stat("stat"):
 service Debug("debug"):
     -- Convert any object into a string
     stringify(o: ⊤) -> string
-    
+
 service Console("run-console"):
     print(any: ⊤)
