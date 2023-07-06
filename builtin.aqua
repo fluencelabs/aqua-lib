@@ -9,6 +9,7 @@ alias Base58String : string
 alias Hash : string
 alias IPLDBlueprint : string
 alias CID : string
+alias Path : string
 
 data Service:
     id: string
@@ -287,7 +288,7 @@ service Dist("dist"):
     -- Arguments:
     --  path   – path or a filename
     --  config - module config
-    add_module_from_vault(path: string, config: ModuleConfig) -> Hash
+    add_module_from_vault(path: Path, config: ModuleConfig) -> Hash
 
     -- Get a list of modules available on the node
     list_modules() -> []Module
@@ -303,7 +304,7 @@ service Dist("dist"):
     -- Loads blueprint by copying it from Particle Vault directory
     -- Arguments:
     --  blueprint_path   – path in Particle Vault
-    load_blueprint(blueprint_path: string) -> IPLDBlueprint
+    load_blueprint(blueprint_path: Path) -> IPLDBlueprint
 
     -- Used to get the blueprints available on the node specified in the service call.
     -- A blueprint is an object of the following structure
@@ -329,7 +330,7 @@ service Script("script"):
     --             - if set, script will be ran once in the interval
     --             - if not set, script will be ran only once
     --               (NOTE: an actual interval may vary by up to 3 seconds)
-    add_from_vault(path: string, interval: ?u64) -> string
+    add_from_vault(path: Path, interval: ?u64) -> string
 
     -- Removes recurring script from a node. Only the creator of the script can delete it
     remove(script_id: string) -> bool
@@ -381,3 +382,10 @@ service Debug("debug"):
 
 service Console("run-console"):
     print(any: ⊤)
+
+-- Particle File Vault
+service Vault("vault"):
+    -- Puts data into the vault and returns virtual path
+    put(data: string) -> Path
+    -- Cats data from the vault
+    cat(path: Path) -> string
