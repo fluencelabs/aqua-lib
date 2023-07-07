@@ -387,5 +387,5 @@ service Console("run-console"):
 service Vault("vault"):
     -- Puts data into the vault and returns virtual path
     put(data: string) -> Path
-    -- Cats data from the vault
+    -- Returns the content of the file from the vault
     cat(path: Path) -> string
