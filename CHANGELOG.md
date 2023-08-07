@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.7.3](https://github.com/fluencelabs/aqua-lib/compare/aqua-lib-v0.7.2...aqua-lib-v0.7.3) (2023-07-17)
+
+
+### Features
+
+* **builtin:** add vault service ([#49](https://github.com/fluencelabs/aqua-lib/issues/49)) ([fbde8e9](https://github.com/fluencelabs/aqua-lib/commit/fbde8e97c2344f9ded12327c0f27bafe56e66999))
+* update blueprint API [NET-488] ([#45](https://github.com/fluencelabs/aqua-lib/issues/45)) ([8db8118](https://github.com/fluencelabs/aqua-lib/commit/8db811843c6c377c68b9927bc3bae1eca6944ab6))
+
 ## [0.7.2](https://github.com/fluencelabs/aqua-lib/compare/aqua-lib-v0.7.1...aqua-lib-v0.7.2) (2023-06-27)
 
 
