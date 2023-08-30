@@ -28,11 +28,12 @@ service Worker("worker"):
 
     -- Returns worker peer id associated with `init_peer_id`.
     -- Throws an error if worker doesn't exist.
+    -- WILL BE DEPRECATED SOON, use `get_worker_id` instead.
     get_peer_id() -> PeerId
 
     -- Returns worker peer id associated with `init_peer_id`.
     -- Returns nil if worker doesn't exist.
-    get_peer_id_opt() -> ?PeerId
+    get_worker_id() -> ?PeerId
 
     -- Removes worker with all deployed spells and services.
     -- Throws an error if worker doesn't exist.
