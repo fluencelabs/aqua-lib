@@ -243,6 +243,11 @@ service Srv("srv"):
     -- Returns: service id associated with the given alias
     resolve_alias(alias: string) -> string
 
+    -- Resolves given alias to a service id
+    -- If there's no such alias, returns nil
+    -- Returns: service id associated with the given alias or nil
+    resolve_alias_opt(alias: string) -> ?string
+
     -- Retrieves the functional interface of a service running
     -- on the node specified in the service call
     -- Argument: service_id – ID of the service whose interface you want to retrieve.
