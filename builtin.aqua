@@ -245,7 +245,7 @@ service Srv("srv"):
 
     -- Resolves given alias to a service id
     -- If there's no such alias, returns nil
-    -- Returns: service id associated with the given alias
+    -- Returns: service id associated with the given alias or nil
     resolve_alias_opt(alias: string) -> ?string
 
     -- Retrieves the functional interface of a service running
