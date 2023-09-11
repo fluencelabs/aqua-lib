@@ -1,0 +1,23 @@
+aqua Subnet declares *
+
+const BLOCKCHAIN_ADDRESS ?= ""
+
+data SubnetWorker:
+    pat_id: string
+    host_id: string
+    worker_id: ?string
+
+data Subnet:
+    workers: []SubnetWorker
+    error: []string
+
+-- Blockchain query service
+service Connector("fluence_aurora_connector"):
+    -- Returns a list of workers by deal id
+    resolve_subnet(deal_id: string, api_endpoint: string) -> Subnet
+
+-- resolve subnet by deal id. You have to register Connector service, before using this
+func resolve(deal_id: string) -> Subnet:
+    on INIT_PEER_ID:
+        subnet <- Connector.resolve_subnet(deal_id, BLOCKCHAIN_ADDRESS)
+    <- subnet
