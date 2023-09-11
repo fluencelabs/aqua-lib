@@ -117,6 +117,15 @@ data MemoryStat:
   memory_size_bytes: u64
   max_memory_size_bytes: u64
 
+data SubnetWorker:
+    pat_id: string
+    host_id: string
+    worker_id: ?string
+
+data Subnet:
+    workers: []SubnetWorker
+    error: []string
+
 service Op("op"):
     -- does nothing
     noop()
@@ -394,3 +403,8 @@ service Vault("vault"):
     put(data: string) -> Path
     -- Returns the content of the file from the vault
     cat(path: Path) -> string
+
+-- Blockchain query service
+service Connector("fluence_aurora_connector"):
+    -- Returns a list of workers by deal id
+    resolve_subnet(dealId: string, apiEndpoint: string) -> Subnet
