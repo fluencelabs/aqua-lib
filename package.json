@@ -6,7 +6,8 @@
     "builtin.aqua",
     "math.aqua",
     "binary.aqua",
-    "workers.aqua"
+    "workers.aqua",
+    "subnet.aqua"
   ],
   "scripts": {
     "compile-dry": "aqua -i . --dry"
