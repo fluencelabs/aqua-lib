@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.5](https://github.com/fluencelabs/aqua-lib/compare/aqua-lib-v0.7.4...aqua-lib-v0.7.5) (2023-09-21)
+
+
+### Bug Fixes
+
+* add subnet.aqua to "files" ([3c78d86](https://github.com/fluencelabs/aqua-lib/commit/3c78d8693f909da9ec935e59bb2f48a862532dc9))
+
 ## [0.7.4](https://github.com/fluencelabs/aqua-lib/compare/aqua-lib-v0.7.3...aqua-lib-v0.7.4) (2023-09-21)
 
 
