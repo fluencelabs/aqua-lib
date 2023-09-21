@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.7.4](https://github.com/fluencelabs/aqua-lib/compare/aqua-lib-v0.7.3...aqua-lib-v0.7.4) (2023-09-21)
+
+
+### Features
+
+* **builtin:** add resolve_alias_opt [NET-528] ([#50](https://github.com/fluencelabs/aqua-lib/issues/50)) ([c47dd03](https://github.com/fluencelabs/aqua-lib/commit/c47dd03e8cd20c6e5d30634adf3991289e1bde50))
+* **builtin:** add subnet.resolve ([428365b](https://github.com/fluencelabs/aqua-lib/commit/428365b886f0690090fa0c7241111c62ab792d9c))
+* **workers:** add Worker.get_worker_id [NET-523] ([#51](https://github.com/fluencelabs/aqua-lib/issues/51)) ([8447625](https://github.com/fluencelabs/aqua-lib/commit/8447625cfaa8bb1973427a0e989ef16143cc204a))
+
 ## [0.7.3](https://github.com/fluencelabs/aqua-lib/compare/aqua-lib-v0.7.2...aqua-lib-v0.7.3) (2023-07-17)
 
 
