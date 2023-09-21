@@ -1,14 +1,15 @@
-data SubnetWorker:
-    pat_id: string
-    host_id: string
-    worker_id: ?string
+data Worker:
+  pat_id: string
+  host_id: string
+  worker_id: []string
 
-data Subnet:
-    workers: []SubnetWorker
-    error: []string
+data SubnetResolveResult:
+  -- Was call successful or not
+  success: bool
+  -- Error message. Will be null if the call is successful
+  error: ?string
+  workers: []Worker
 
--- Blockchain query service
-service Connector("fluence_aurora_connector"):
+service Subnet("subnet"):
     -- Returns a list of workers by deal id
-    resolve_subnet(deal_id: string) -> Subnet
-
+    resolve(deal_id: string) -> SubnetResolveResult
