@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.6](https://github.com/fluencelabs/aqua-lib/compare/aqua-lib-v0.7.5...aqua-lib-v0.7.6) (2023-09-22)
+
+
+### Bug Fixes
+
+* **subnet:** change worker_id type ([#56](https://github.com/fluencelabs/aqua-lib/issues/56)) ([a773935](https://github.com/fluencelabs/aqua-lib/commit/a773935d65d484f715a7349521d9802eb8f32f4a))
+
 ## [0.7.5](https://github.com/fluencelabs/aqua-lib/compare/aqua-lib-v0.7.4...aqua-lib-v0.7.5) (2023-09-21)
 
 
