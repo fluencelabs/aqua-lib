@@ -1,7 +1,7 @@
 data Worker:
   pat_id: string
   host_id: string
-  worker_id: []string
+  worker_id: ?string
 
 data SubnetResolveResult:
   -- Was call successful or not
