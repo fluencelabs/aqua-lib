@@ -12,7 +12,7 @@ service DealWorker("worker"):
 
     -- Returns worker peer id associated with `deal_id`.
     -- Returns nil if worker doesn't exist.
-    get_peer_id_opt(deal_id: ?string) -> PeerId
+    get_worker_id(deal_id: ?string) -> ?PeerId
 
     -- Removes worker with all deployed spells and services.
     -- Throws an error if worker doesn't exist.
