@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.8.0](https://github.com/fluencelabs/aqua-lib/compare/aqua-lib-v0.7.7...aqua-lib-v0.8.0) (2023-11-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* **workers:** 
+
+### Features
+
+* **workers:** deprecate API w/o deal_id; add list [NET-565] ([#61](https://github.com/fluencelabs/aqua-lib/issues/61)) ([cce6da5](https://github.com/fluencelabs/aqua-lib/commit/cce6da5f423837a1f0748150f9c703cae4f05fa5))
+* **workers:** deprecate API w/o deal_id; add list [NET-565] ([#61](https://github.com/fluencelabs/aqua-lib/issues/61)) ([#64](https://github.com/fluencelabs/aqua-lib/issues/64)) ([0363446](https://github.com/fluencelabs/aqua-lib/commit/0363446d790f7fd19d632e1016aee99f92ca9b39))
+
 ## [0.7.7](https://github.com/fluencelabs/aqua-lib/compare/aqua-lib-v0.7.6...aqua-lib-v0.7.7) (2023-09-22)
 
 
