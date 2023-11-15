@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.1](https://github.com/fluencelabs/aqua-lib/compare/aqua-lib-v0.8.0...aqua-lib-v0.8.1) (2023-11-15)
+
+
+### Bug Fixes
+
+* **buitin:** update Srv.list result type ([#66](https://github.com/fluencelabs/aqua-lib/issues/66)) ([f3b2144](https://github.com/fluencelabs/aqua-lib/commit/f3b2144e35c972c09b1121cdd9fc51135eb6cd68))
+
 ## [0.8.0](https://github.com/fluencelabs/aqua-lib/compare/aqua-lib-v0.7.7...aqua-lib-v0.8.0) (2023-11-14)
 
 
