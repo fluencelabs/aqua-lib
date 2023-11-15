@@ -14,6 +14,8 @@ alias Path : string
 data Service:
     id: string
     blueprint_id: string
+    -- `spell` or `service`
+    service_type: string
     owner_id: string
     aliases: []string
     worker_id: string
