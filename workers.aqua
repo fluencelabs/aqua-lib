@@ -17,3 +17,17 @@ service Worker("worker"):
 
     -- Returns list of all workers.
     list() -> []PeerId
+
+    -- Restarts worker installation spell.
+    -- Can be called only by system spells or peer manager,
+    -- Throws an error if worker doesn't exist.
+    activate(deal_id: string)
+
+    -- Stops all worker spells and drops all incoming particles until activation.
+    -- Can be called only by system spells or peer manager,
+    -- Throws an error if worker doesn't exist.
+    deactivate(deal_id: string)
+
+    -- Returns true if worker is active.
+    -- Throws an error if worker doesn't exist.
+    is_active(deal_id: string) -> bool
