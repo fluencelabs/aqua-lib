@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.2](https://github.com/fluencelabs/aqua-lib/compare/aqua-lib-v0.8.1...aqua-lib-v0.8.2) (2023-11-27)
+
+
+### Features
+
+* **workers:** add activate/deactivate ([#65](https://github.com/fluencelabs/aqua-lib/issues/65)) ([401621a](https://github.com/fluencelabs/aqua-lib/commit/401621a38930c8166984ecbf03edede451fe9487))
+
 ## [0.8.1](https://github.com/fluencelabs/aqua-lib/compare/aqua-lib-v0.8.0...aqua-lib-v0.8.1) (2023-11-15)
 
 
