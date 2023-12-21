@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.9.0](https://github.com/fluencelabs/aqua-lib/compare/aqua-lib-v0.8.2...aqua-lib-v0.9.0) (2023-12-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* **binary:** Remove binary.aqua ([#75](https://github.com/fluencelabs/aqua-lib/issues/75))
+
+### Features
+
+* **builtin:** Add header to builtin.aqua ([#74](https://github.com/fluencelabs/aqua-lib/issues/74)) ([09c2cd9](https://github.com/fluencelabs/aqua-lib/commit/09c2cd9c07ad25af673dc6f69e5ce4599428dfc0))
+
+
+### Bug Fixes
+
+* **binary:** Remove binary.aqua ([#75](https://github.com/fluencelabs/aqua-lib/issues/75)) ([f89ecfb](https://github.com/fluencelabs/aqua-lib/commit/f89ecfbe7910aed418a30400b4d6de4a82efa197))
+
 ## [0.8.2](https://github.com/fluencelabs/aqua-lib/compare/aqua-lib-v0.8.1...aqua-lib-v0.8.2) (2023-11-27)
 
 
