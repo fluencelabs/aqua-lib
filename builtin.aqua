@@ -1,4 +1,5 @@
 -- Default public interface of Fluence nodes
+aqua Builtin declares *
 
 alias Field : []string
 alias Argument : []string
