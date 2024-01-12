@@ -1,3 +1,5 @@
+aqua MathLib declares *
+
 service Math("math"):
     -- x + y
     add(x: i64, y: i64) -> i64

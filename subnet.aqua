@@ -1,3 +1,5 @@
+aqua SubnetLib declares *
+
 data Worker:
   pat_id: string
   host_id: string

@@ -1,3 +1,5 @@
+aqua WorkersLib declares *
+
 import PeerId from "./builtin.aqua"
 
 -- Available only on rust peers
