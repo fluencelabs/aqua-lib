@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.1](https://github.com/fluencelabs/aqua-lib/compare/aqua-lib-v0.9.0...aqua-lib-v0.9.1) (2024-01-15)
+
+
+### Features
+
+* **aqua-lib:** Add headers ([60b91de](https://github.com/fluencelabs/aqua-lib/commit/60b91def4a481e56f849f5d04734d117eb29c902))
+
 ## [0.9.0](https://github.com/fluencelabs/aqua-lib/compare/aqua-lib-v0.8.2...aqua-lib-v0.9.0) (2023-12-21)
 
 
