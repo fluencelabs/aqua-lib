@@ -65,13 +65,6 @@ data Blueprint:
     name: string
     dependencies: []CID
 
-data ScriptInfo:
-    id: string
-    src: string
-    failures: u32
-    interval: string
-    owner: string
-
 data Contact:
     peer_id: string
     addresses: []string
@@ -320,32 +313,6 @@ service Dist("dist"):
 
     -- Get a single blueprint
     get_blueprint(blueprint_id: string) -> Blueprint
-
-service Script("script"):
-    -- Adds the given script to a node
-    -- Arguments:
-    --  air_script - raw AIR script without any undefined variables
-    --  interval   - time to next run of the script in seconds
-    --             - if set, script will be ran once in the interval
-    --             - if not set, script will be ran only once
-    --               (NOTE: an actual interval may vary by up to 3 seconds)
-    add(air_script: string, interval: ?u64) -> string
-
-    -- Adds the script from the given path to a node
-    -- Arguments:
-    --  path       - path to the AIR script without any undefined variables in the particle file vault
-    --  interval   - time to next run of the script in seconds
-    --             - if set, script will be ran once in the interval
-    --             - if not set, script will be ran only once
-    --               (NOTE: an actual interval may vary by up to 3 seconds)
-    add_from_vault(path: Path, interval: ?u64) -> string
-
-    -- Removes recurring script from a node. Only the creator of the script can delete it
-    remove(script_id: string) -> bool
-
-    -- Returns a list of existing scripts on the node.
-    -- Each object in the list is of the following structure
-    list() -> []ScriptInfo
 
 data SignResult:
     -- Was call successful or not
