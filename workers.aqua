@@ -6,7 +6,7 @@ import PeerId from "./builtin.aqua"
 service Worker("worker"):
     -- Creates new worker associated with `deal_id` and allows specifying custom `cu_ids`.
     -- Arguments:
-    --  deal_id - id of the deal
+    --  deal_id - ID of the deal
     --  cu_ids – an array of target compute unit IDs
     -- Returns: PeerId - worker ID if creation was successful
     -- Throws an error if a worker exists.
