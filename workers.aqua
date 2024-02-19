@@ -4,8 +4,12 @@ import PeerId from "./builtin.aqua"
 
 -- Available only on rust peers
 service Worker("worker"):
-    -- Creates new worker associated with `deal_id`.
-    -- Throws an error if worker exists.
+    -- Creates new worker associated with `deal_id` and allows specifying custom `cu_ids`.
+    -- Arguments:
+    --  deal_id - id of the deal
+    --  cu_ids – an array of target compute unit IDs
+    -- Returns: PeerId - worker ID if creation was successful
+    -- Throws an error if a worker exists.
     create(deal_id: string, cu_ids: []string) -> PeerId
 
     -- Returns worker peer id associated with `deal_id`.
