@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.1](https://github.com/fluencelabs/aqua-lib/compare/aqua-lib-v0.10.0...aqua-lib-v0.10.1) (2024-02-19)
+
+
+### Features
+
+* **worker:** change cu_ids type ([#84](https://github.com/fluencelabs/aqua-lib/issues/84)) ([c92d3e3](https://github.com/fluencelabs/aqua-lib/commit/c92d3e3363a936b0ba4db6bd0b2e2e42337bcfd1))
+
 ## [0.10.0](https://github.com/fluencelabs/aqua-lib/compare/aqua-lib-v0.9.1...aqua-lib-v0.10.0) (2024-02-19)
 
 
