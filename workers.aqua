@@ -2,6 +2,8 @@ aqua WorkersLib declares *
 
 import PeerId from "./builtin.aqua"
 
+alias CUID : []u8
+
 -- Available only on rust peers
 service Worker("worker"):
     -- Creates new worker associated with `deal_id` and allows specifying custom `cu_ids`.
@@ -10,7 +12,7 @@ service Worker("worker"):
     --  cu_ids – an array of target compute unit IDs
     -- Returns: PeerId - worker ID if creation was successful
     -- Throws an error if a worker exists.
-    create(deal_id: string, cu_ids: []string) -> PeerId
+    create(deal_id: string, cu_ids: []CUID) -> PeerId
 
     -- Returns worker peer id associated with `deal_id`.
     -- Returns nil if worker doesn't exist.
