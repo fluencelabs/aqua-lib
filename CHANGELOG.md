@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.10.0](https://github.com/fluencelabs/aqua-lib/compare/aqua-lib-v0.9.1...aqua-lib-v0.10.0) (2024-02-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* **worker:** add cu_ids to worker create ([#82](https://github.com/fluencelabs/aqua-lib/issues/82))
+
+### Features
+
+* **worker:** add cu_ids to worker create ([#82](https://github.com/fluencelabs/aqua-lib/issues/82)) ([5414624](https://github.com/fluencelabs/aqua-lib/commit/54146241562fcece7fd6783305d2c5fd32aa6da8))
+
 ## [0.9.1](https://github.com/fluencelabs/aqua-lib/compare/aqua-lib-v0.9.0...aqua-lib-v0.9.1) (2024-01-15)
 
 
