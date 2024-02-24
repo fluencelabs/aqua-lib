@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.2](https://github.com/fluencelabs/aqua-lib/compare/aqua-lib-v0.10.1...aqua-lib-v0.10.2) (2024-02-24)
+
+
+### Features
+
+* Add new method for module upload from vault ([b439997](https://github.com/fluencelabs/aqua-lib/commit/b439997ba77168ea7a5e773368e0a03c6167d988))
+
 ## [0.10.1](https://github.com/fluencelabs/aqua-lib/compare/aqua-lib-v0.10.0...aqua-lib-v0.10.1) (2024-02-19)
 
 
