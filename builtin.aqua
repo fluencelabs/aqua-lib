@@ -277,26 +277,19 @@ service Dist("dist"):
     --  module_name        - import name of the module
     default_module_config(module_name: string) -> ModuleConfig
 
+
     -- Used to add modules to the node specified in the service call
     -- Arguments:
     --  bytes – a base64 string containing the .wasm module to add.
     --  config – module info
     --  Returns: blake3 hash of the module
-    -- NOTE: the config is IGNORED and only module's `name` is taken from it
     add_module(wasm_b56_content: Bytes, conf: ModuleConfig) -> string
 
     -- Adds module by copying it from Particle Vault directory
     -- Arguments:
     --  path   – path or a filename
     --  config - module config
-    -- NOTE: the config is IGNORED and only module's `name` is taken from it
     add_module_from_vault(path: Path, config: ModuleConfig) -> Hash
-
-    -- Adds module by copying it from Particle Vault directory
-    -- Arguments:
-    --  path   – path or a filename
-    --  config - module config
-    add_module_bytes_from_vault(name: string, module_cid: string) -> string
 
     -- Get a list of modules available on the node
     list_modules() -> []Module
