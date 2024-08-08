@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.11.0](https://github.com/fluencelabs/aqua-lib/compare/aqua-lib-v0.10.2...aqua-lib-v0.11.0) (2024-08-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* change Worker type in SubnetResolveResult ([#88](https://github.com/fluencelabs/aqua-lib/issues/88))
+
+### Features
+
+* change Worker type in SubnetResolveResult ([#88](https://github.com/fluencelabs/aqua-lib/issues/88)) ([f8ef9f3](https://github.com/fluencelabs/aqua-lib/commit/f8ef9f3a5408354026b6b6fccbf3689b492ff929))
+
 ## [0.10.2](https://github.com/fluencelabs/aqua-lib/compare/aqua-lib-v0.10.1...aqua-lib-v0.10.2) (2024-02-24)
 
 
