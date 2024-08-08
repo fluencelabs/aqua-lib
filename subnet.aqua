@@ -1,7 +1,7 @@
 aqua SubnetLib declares *
 
 data Worker:
-  pat_id: string
+  unit_id: string
   host_id: string
   worker_id: ?string
 
