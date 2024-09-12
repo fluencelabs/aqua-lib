@@ -35,12 +35,18 @@ data Interface:
     function_signatures: []FunctionSignature
     record_types: []RecordType
 
+data VmInfo:
+    ip: string
+    default_ssh_port: u16
+    forwarded_ports: []string
+
 data Info:
     external_addresses: []string
     node_version: string
     air_version: string
     spell_version: string
-    allowed_binaries: []string
+    allowed_effectors: []string
+    vm_info: ?VmInfo
 
 data ModuleWASIConfig:
     envs: ?Pairs
