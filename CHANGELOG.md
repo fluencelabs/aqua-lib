@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.12.0](https://github.com/fluencelabs/aqua-lib/compare/aqua-lib-v0.11.0...aqua-lib-v0.12.0) (2024-09-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* **builtins:** update peer.identify
+
+### Features
+
+* **builtins:** update peer.identify ([c8efe9c](https://github.com/fluencelabs/aqua-lib/commit/c8efe9c33a0730a5ebaeb17228c2f4db90f7729e))
+
 ## [0.11.0](https://github.com/fluencelabs/aqua-lib/compare/aqua-lib-v0.10.2...aqua-lib-v0.11.0) (2024-08-08)
 
 
