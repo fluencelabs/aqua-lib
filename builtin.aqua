@@ -45,7 +45,7 @@ data Info:
     node_version: string
     air_version: string
     spell_version: string
-    allowed_effectors: []string
+    allowed_binaries: []string
     vm_info: ?VmInfo
 
 data ModuleWASIConfig:
