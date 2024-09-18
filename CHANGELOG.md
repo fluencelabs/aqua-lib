@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.12.1](https://github.com/fluencelabs/aqua-lib/compare/aqua-lib-v0.12.0...aqua-lib-v0.12.1) (2024-09-18)
+
+
+### Bug Fixes
+
+* fix Peer.identify return type ([#92](https://github.com/fluencelabs/aqua-lib/issues/92)) ([cba9b78](https://github.com/fluencelabs/aqua-lib/commit/cba9b785a3eae32bfd02d55d08febdd076540844))
+
 ## [0.12.0](https://github.com/fluencelabs/aqua-lib/compare/aqua-lib-v0.11.0...aqua-lib-v0.12.0) (2024-09-12)
 
 
